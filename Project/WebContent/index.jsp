@@ -1,4 +1,3 @@
-<%@page import="model.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,12 +10,10 @@
 <title>Project</title>
 </head>
 <body>
-
-<div class="header">
-<li class="dropdown">
-	<a href="about" class="active dropdown-toggle disabled" data-toggle="dropdown">About</a>
-</li>
-</div>
-${param}
+	<div id="container">
+		<div id="header"><jsp:include page="menu.jsp"/></div>
+		<div id="content"><jsp:include page="content.jsp"/></div>
+		<div id="main"><jsp:include page="main.jsp"/></div>
+	</div>
 </body>
 </html>
