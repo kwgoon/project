@@ -2,11 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "dtd/mybatis-3-config.dtd">
 <configuration>
 	<properties resource="conf/dbInfo.properties"/>
-
 	<typeAliases>
-		<typeAlias type="model.domain.DeptBean" alias="dept"/>
+		<typeAlias type="model.domain.BoardDTO" alias="board"/>
+		<typeAlias type="model.domain.StudentsDTO" alias="students"/>
+		<typeAlias type="model.domain.UsersDTO" alias="users"/>
 	</typeAliases>
-	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
@@ -21,9 +21,9 @@
 			</dataSource>
 		</environment>
 	</environments>
-
 	<mappers>
-		<mapper resource="conf/dept.xml"/>
+		<mapper resource="conf/board.xml"/>
+		<mapper resource="conf/students.xml"/>
+		<mapper resource="conf/users.xml"/>
 	</mappers>
-
 </configuration>

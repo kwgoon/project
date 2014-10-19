@@ -1,4 +1,4 @@
-<%@page import="model.dao.BorderDAO"%>
+<%@page import="model.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,12 +11,6 @@
 <title>Project</title>
 </head>
 <body>
-¼®¹ü
-<%
-	BorderDAO dept = new BorderDAO();
-
-dept.getDeptAll();
-%>
 
 <div class="header">
 <li class="dropdown">

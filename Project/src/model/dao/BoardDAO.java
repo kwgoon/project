@@ -9,46 +9,46 @@ import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
 
-public class BorderDAO {
-
-	public static List<BoardDTO> allList() throws SQLException{
+public class BoardDAO {
+	public static List<BoardDTO> selectAll() throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		List<BoardDTO> selectAll = null;
+		
 		try{
-			selectAll = session.selectList("selectAll");
+			selectAll = session.selectList("board.selectAll");
 		}finally{
 			session.close();
 		}
 		return selectAll;
 	}
-	
-	public static BoardDTO oneList(String custId) throws SQLException {
+	public static BoardDTO selectOne(int no) throws SQLException {
 		SqlSession session = DBUtil.getSession();
-		BoardDTO border = null;
+		BoardDTO board = null;
+		
 		try{
-			border = (BoardDTO)session.selectOne("d.insertOne", custId);
+			board = (BoardDTO)session.selectOne("board.selectOne", no);
 		}finally{
 			session.close();
 		}
-		return border;
+		return board;
 	}
-	
 	public static int insert(BoardDTO board) throws SQLException {
 		SqlSession session = DBUtil.getSession(true);
 		int value = 0;
+		
 		try{
-			value = session.insert("d.insertOne", board);
+			value = session.insert("board.insertOne", board);
 		}finally{
 			session.close();
 		}
 		return value;
 	}
-	
-	public static int update(BoardDTO border){
+	public static int update(BoardDTO board){
 		SqlSession session = DBUtil.getSession(true);
 		int value = 0;
+		
 		try{
-			value = session.update("d.updateOne", border);
+			value = session.update("board.updateOne", board);
 		}finally{
 			session.close();
 		}
@@ -58,8 +58,9 @@ public class BorderDAO {
 	public static int delete(int no){
 		SqlSession session = DBUtil.getSession(true);
 		int value = 0;
+		
 		try{
-			value = session.update("d.deleteOne", no);
+			value = session.update("board.deleteOne", no);
 		}finally{
 			session.close();
 		}

@@ -14,8 +14,8 @@ CREATE TABLE board (
 	contents varchar2(100),
 	days varchar2(20),
 	id varchar2(30),
-	type number(1),
-	count number(3)
+	count number(3),
+	type number(1)
 );
 CREATE TABLE students (
 	code varchar2(50),
