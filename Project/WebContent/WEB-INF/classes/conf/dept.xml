@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 					PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="d">
+<mapper namespace="border">
 
 	<resultMap id="deptMapping" type="dept" >
 		<result property="no" column="deptno"/>

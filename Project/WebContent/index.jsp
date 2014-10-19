@@ -1,4 +1,4 @@
-<%@page import="model.dao.DeptDAO"%>
+<%@page import="model.dao.BorderDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -13,7 +13,7 @@
 <body>
 ¼®¹ü
 <%
-DeptDAO dept = new DeptDAO();
+	BorderDAO dept = new BorderDAO();
 
 dept.getDeptAll();
 %>
