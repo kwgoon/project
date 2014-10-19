@@ -11,6 +11,7 @@
 <title>Project</title>
 </head>
 <body>
+гоюл
 <%
 DeptDAO dept = new DeptDAO();
 
