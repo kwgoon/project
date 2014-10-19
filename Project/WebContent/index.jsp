@@ -11,7 +11,7 @@
 <title>Project</title>
 </head>
 <body>
-하이gkgk
+석범
 <%
 DeptDAO dept = new DeptDAO();
 
