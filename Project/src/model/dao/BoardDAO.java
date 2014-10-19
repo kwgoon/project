@@ -27,6 +27,8 @@ public class BoardDAO {
 		
 		try{
 			board = (BoardDTO)session.selectOne("board.selectOne", no);
+			board.setCount(board.getCount() + 1);
+			update(board);
 		}finally{
 			session.close();
 		}
