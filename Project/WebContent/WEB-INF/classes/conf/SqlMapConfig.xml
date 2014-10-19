@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="conf/dbInfo.properties"/>
+
+	<typeAliases>
+		<typeAlias type="model.domain.DeptBean" alias="dept"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.id}"/>
+				<property name="password" value="${jdbc.pwd}"/>
+				<!-- Connection 개수 설정  -->
+				<property name="poolMaximumActiveConnections" value="10"/>
+				<property name="poolMaximumIdleConnections" value="5"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="conf/dept.xml"/>
+	</mappers>
+
+</configuration>

@@ -12,30 +12,23 @@ public class DeptBean {
 		this.address = address;
 	}
 	public int getNo() {
-		System.out.println("getNo()");
 		return no;
 	}
 	public void setNo(int no) {
-		System.out.println("setNo()");
 		this.no = no;
 	}
 	public String getName() {
-		System.out.println("getName()");
 		return name;
 	}
 	public void setName(String name) {
-		System.out.println("setName()");
 		this.name = name;
 	}
 	public String getAddress() {
-		System.out.println("getAddress()");
 		return address;
 	}
 	public void setAddress(String address) {
-		System.out.println("setAddress()");
 		this.address = address;
 	}
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("DeptBean [no=");

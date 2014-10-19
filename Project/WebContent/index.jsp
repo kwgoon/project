@@ -17,5 +17,12 @@ DeptDAO dept = new DeptDAO();
 
 dept.getDeptAll();
 %>
+
+<div class="header">
+<li class="dropdown">
+	<a href="about" class="active dropdown-toggle disabled" data-toggle="dropdown">About</a>
+</li>
+</div>
+${param}
 </body>
 </html>
