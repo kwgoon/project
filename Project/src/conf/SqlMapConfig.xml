@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- db설정 파일인 properties 파일 include -->
 	<properties resource="conf/dbInfo.properties"/>
 
 	<typeAliases>
-		<typeAlias type="model.domain.BranchDTO" alias="branch"/>
-		<typeAlias type="model.domain.EmployeeDTO" alias="employee"/>
+		<typeAlias type="model.domain.DeptBean" alias="dept"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -25,8 +23,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="conf/branch.xml"/>
-		<mapper resource="conf/employee.xml"/>
+		<mapper resource="conf/dept.xml"/>
 	</mappers>
 
 </configuration>
