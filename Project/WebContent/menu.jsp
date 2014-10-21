@@ -9,7 +9,7 @@
 </head>
 <body>
 <center>
-<nav id="topMenu" >
+<nav id="topMenu">
     <ul>
         <li class="topMenuLi">
             <a class="menuLink" href="http://unikys.tistory.com/category/Programming%20Lecture">MENU1</a>
@@ -18,7 +18,6 @@
                 <li><a href="controller?action=about" class="submenuLink">menu2</a></li>
             </ul>
         </li>
-        <li>|</li>
         <li class="topMenuLi">
             <a class="menuLink" href="http://unikys.tistory.com/tag">MENU2</a>
             <ul class="submenu">
