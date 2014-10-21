@@ -34,3 +34,5 @@ INSERT INTO users VALUES ('t2', '1234', '임경혜');
 INSERT INTO board VALUES (sequence_board_no.NEXTVAL, '공지 제목', '내용', SYSDATE, 't1', 0, 0);
 INSERT INTO board VALUES (sequence_board_no.NEXTVAL, '일반 제목', '내용', SYSDATE, 't2', 1, 0);
 INSERT INTO students VALUES ('UCAMP20A001', '박명미', '몰라', 'mm@mm.com');
+
+COMMIT;

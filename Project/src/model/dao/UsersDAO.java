@@ -17,7 +17,7 @@ public class UsersDAO{
 		
 		try{
 			session = DBUtil.getSession();		
-			users = session.selectOne("loginCheck", users);
+			users = session.selectOne("users.loginCheck", users);
 			if(users != null){
 				return true;
 			}
