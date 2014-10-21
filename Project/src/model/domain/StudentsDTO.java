@@ -2,45 +2,45 @@ package model.domain;
 
 import java.io.Serializable;
 
-public class StudentsDTO implements Serializable {
+public class StudentsDTO implements Serializable{
 	private String code;
 	private String name;
 	private String company;
 	private String email;
 	
-	public StudentsDTO() {}
-	public StudentsDTO(String code, String name, String company, String email) {
+	public StudentsDTO(){}
+	public StudentsDTO(String code, String name, String company, String email){
 		super();
 		this.code = code;
 		this.name = name;
 		this.company = company;
 		this.email = email;
 	}
-	public String getCode() {
+	public String getCode(){
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(String code){
 		this.code = code;
 	}
-	public String getName() {
+	public String getName(){
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name){
 		this.name = name;
 	}
-	public String getCompany() {
+	public String getCompany(){
 		return company;
 	}
-	public void setCompany(String company) {
+	public void setCompany(String company){
 		this.company = company;
 	}
-	public String getEmail() {
+	public String getEmail(){
 		return email;
 	}
-	public void setEmail(String email) {
+	public void setEmail(String email){
 		this.email = email;
 	}
-	public String toString() {
+	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		builder.append("StudentsDTO [code=");
 		builder.append(code);

@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
 
-public class BoardDAO {
+public class BoardDAO{
 	public static List<BoardDTO> selectAll() throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		List<BoardDTO> selectAll = null;
@@ -21,7 +21,7 @@ public class BoardDAO {
 		}
 		return selectAll;
 	}
-	public static BoardDTO selectOne(int no) throws SQLException {
+	public static BoardDTO selectOne(int no) throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		BoardDTO board = null;
 		
@@ -34,38 +34,37 @@ public class BoardDAO {
 		}
 		return board;
 	}
-	public static int insert(BoardDTO board) throws SQLException {
+	public static int insert(BoardDTO board) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 		
 		try{
-			value = session.insert("board.insertOne", board);
+			result = session.insert("board.insertOne", board);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
-	public static int update(BoardDTO board){
+	public static int update(BoardDTO board) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 		
 		try{
-			value = session.update("board.updateOne", board);
+			result = session.update("board.updateOne", board);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
-	
-	public static int delete(int no){
+	public static int delete(int no) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 		
 		try{
-			value = session.update("board.deleteOne", no);
+			result = session.update("board.deleteOne", no);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
 }

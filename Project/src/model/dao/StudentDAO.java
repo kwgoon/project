@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
 
-public class StudentDAO {
+public class StudentDAO{
 	public static List<StudentsDTO> selectAll() throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		List<StudentsDTO> selectAll = null;
@@ -21,8 +21,7 @@ public class StudentDAO {
 		}
 		return selectAll;
 	}
-	
-	public static StudentsDTO selectOne(String code) throws SQLException {
+	public static StudentsDTO selectOne(String code) throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		StudentsDTO student = null;
 		
@@ -33,37 +32,37 @@ public class StudentDAO {
 		}
 		return student;
 	}
-	public static int insert(StudentsDTO student) throws SQLException {
+	public static int insert(StudentsDTO student) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 		
 		try{
-			value = session.insert("student.insertOne", student);
+			result = session.insert("student.insertOne", student);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
-	public static int update(StudentsDTO student){
+	public static int update(StudentsDTO student) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 		
 		try{
-			value = session.update("student.updateOne", student);
+			result = session.update("student.updateOne", student);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
-	public static int delete(int code){
+	public static int delete(int code) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
-		int value = 0;
+		int result = 0;
 
 		try{
-			value = session.delete("student.deleteOne", code);
+			result = session.delete("student.deleteOne", code);
 		}finally{
 			session.close();
 		}
-		return value;
+		return result;
 	}
 }

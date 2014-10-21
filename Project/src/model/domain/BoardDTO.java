@@ -2,7 +2,7 @@ package model.domain;
 
 import java.io.Serializable;
 
-public class BoardDTO implements Serializable {
+public class BoardDTO implements Serializable{
 	private int no;
 	private String title;
 	private String contents;
@@ -11,8 +11,8 @@ public class BoardDTO implements Serializable {
 	private int count;
 	private int type;
 	
-	public BoardDTO() {}
-	public BoardDTO(int no, String title, String contents, String days, String id, int count, int type) {
+	public BoardDTO(){}
+	public BoardDTO(int no, String title, String contents, String days, String id, int count, int type){
 		this.no = no;
 		this.title = title;
 		this.contents = contents;
@@ -21,49 +21,49 @@ public class BoardDTO implements Serializable {
 		this.count = count;
 		this.type = type;
 	}
-	public int getNo() {
+	public int getNo(){
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(int no){
 		this.no = no;
 	}
-	public String getTitle() {
+	public String getTitle(){
 		return title;
 	}
-	public void setTitle(String title) {
+	public void setTitle(String title){
 		this.title = title;
 	}
-	public String getContents() {
+	public String getContents(){
 		return contents;
 	}
-	public void setContents(String contents) {
+	public void setContents(String contents){
 		this.contents = contents;
 	}
-	public String getDays() {
+	public String getDays(){
 		return days;
 	}
-	public void setDays(String days) {
+	public void setDays(String days){
 		this.days = days;
 	}
-	public String getId() {
+	public String getId(){
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(String id){
 		this.id = id;
 	}
-	public int getCount() {
+	public int getCount(){
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(int count){
 		this.count = count;
 	}
-	public int getType() {
+	public int getType(){
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(int type){
 		this.type = type;
 	}
-	public String toString() {
+	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		builder.append("BoardDTO [no=");
 		builder.append(no);

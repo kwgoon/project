@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
 
-public class UsersDAO {
+public class UsersDAO{
 	public static boolean loginCheck(String id, String pw){
 		SqlSession session = null;
 		HashMap<String, String> users = new HashMap<String, String>();
