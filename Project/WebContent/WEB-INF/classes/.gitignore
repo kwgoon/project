@@ -1,6 +1,6 @@
-/conf
+/conf/
+/controller/
 /log4j.properties
-/model
-/util
+/model/
 /service/
-/controller
+/util/
