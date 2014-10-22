@@ -1,7 +1,3 @@
 /conf/
-/controller/
-/log4j.properties
 /model/
-/service/
-/util/
-/exception/
+/controller/

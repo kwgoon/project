@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="${param.action}" />
+<c:if test="${not empty param.action}">
+	<jsp:include page="${param.action}" />
+</c:if>
 </body>
 </html>

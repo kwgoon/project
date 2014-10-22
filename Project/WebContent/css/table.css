@@ -1,0 +1,16 @@
+@CHARSET "EUC-KR";
+
+/* ÆÄ¶û: #526BBE È¸»öºûÆÄ¶û: #5B6882 #1bbae1 #428bca #394263 
+#484b5a
+#41538f
+#606dba
+#5778d7
+#6092e9
+#74a7f8
+#81bdec
+*/
+table.t_e {background:#; width:70%; margin:0 auto; text-align:left; border-collapse: collapse;}
+.c1 {cursor:pointer;}
+.c1:hover {background:#81bdec;}
+.t_e td, .t_e th {border:1px solid #394263; padding:10px}
+.t_e th {background:#428bca; color:#fff; text-align:center}

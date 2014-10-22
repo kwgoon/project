@@ -24,19 +24,46 @@ public class Controller extends HttpServlet{
 		request.setCharacterEncoding("euc-kr");
 		String action = request.getParameter("action");
 		
-		if(action.equals("boardListView")){
+		if(action.equals("loginView")){
+			loginView(request, response);
+		}else if(action.equals("boardListView")){
 			boardListView(request, response);
+		}else if(action.equals("boardDetailView")){
+			boardDetailView(request, response);
 		}
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try {
-			List<BoardDTO> allList = BoardManagement.selectAll();
-			request.setAttribute("allList", allList);
+			List<BoardDTO> allList = null;
+			allList = BoardManagement.selectAll();
+			if(allList != null){
+				request.setAttribute("allList", allList);
+			}
 			request.getRequestDispatcher("index.jsp?action=html/boardListView.jsp").forward(request, response);
 		} catch (SQLException e) {
 			System.out.println(e.getStackTrace());
 		} catch (RecordNotFoundException e) {
 			System.out.println(e.getStackTrace());
 		}
+	}
+	protected void boardDetailView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String no = request.getParameter("no");
+		try {
+			if(no == "" || no == null){
+				return;
+			}
+			BoardDTO board = BoardManagement.selectOne(Integer.parseInt(no));
+			if(board != null){
+				request.setAttribute("board", board);
+			}
+			request.getRequestDispatcher("index.jsp?action=html/boardDetailView.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	protected void loginView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("index.jsp?action=html/loginView.jsp").forward(request, response);
 	}
 }
