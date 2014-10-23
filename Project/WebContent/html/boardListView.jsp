@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+$(document).ready(function(){
+	$("tr").click(function(){
+	    $.ajax({
+    		url: "controller?action="+$(this).attr("id"),
+    		success:function(result){
+      			$("#main").html(result);
+    		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
+});
+</script>
 <table class="t_e">
 	<tr>
 		<th width="10%">번호</th>
@@ -10,7 +25,7 @@
 		<th width="10%">조회수</th>
 	</tr>
 	<c:forEach items="${requestScope.allList}" var="board">		
-	<tr class="c1" onclick="location.href='<%=request.getContextPath()%>/controller?action=boardDetailView&no=${board.no}'">
+	<tr class="c1" id="boardDetailView&no=${board.no}">
 		<td>${board.no}</td>
 		<td>${board.title}</td>
 		<td>${board.days}</td>

@@ -9,7 +9,7 @@
 #74a7f8
 #81bdec
 */
-table.t_e {background:#; width:70%; margin:0 auto; text-align:left; border-collapse: collapse;}
+table.t_e {background:#d7eaf9; width:70%; margin:0 auto; text-align:left; border-collapse: collapse;}
 .c1 {cursor:pointer;}
 .c1:hover {background:#81bdec;}
 .t_e td, .t_e th {border:1px solid #394263; padding:10px}

@@ -8,9 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/table.css" />
+<link rel="stylesheet" type="text/css" href="css/result.css" />
 <title>Project</title>
 </head>
 <body>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+
+</script>
 	<div id="container">
 		<div id="header"><jsp:include page="menu.jsp"/></div>
 		<div id="content"><jsp:include page="content.jsp"/></div>

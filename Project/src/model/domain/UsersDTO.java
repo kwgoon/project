@@ -8,6 +8,10 @@ public class UsersDTO implements Serializable{
 	private String name;
 	
 	public UsersDTO(){}
+	public UsersDTO(String id, String pw){
+		this.id = id;
+		this.pw = pw;
+	}
 	public UsersDTO(String id, String pw, String name){
 		this.id = id;
 		this.pw = pw;

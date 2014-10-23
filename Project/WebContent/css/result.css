@@ -1,0 +1,19 @@
+@CHARSET "EUC-KR";
+
+div.result	{
+	position: absolute;
+	z-index: -5;
+	top: -50px;
+	width: 200px;
+	padding: 10px;
+	border: 2px solid #526BBE;
+	margin: auto;
+	background-color: #E9F3FF;
+	text-align: center;
+	color: #526BBE;
+	font-size: 13pt;
+	font-weight: bold;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}

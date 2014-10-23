@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,9 +8,23 @@
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/httpRequest.js"></script>
 <script>
-function viewSubmenu(view){
-	
-}
+$(document).ready(function(){
+	$("a").click(function(){
+	    $.ajax({
+    		url: "controller?action="+$(this).attr("name"),
+    		success:function(result){
+      			$("#main").html(result);
+      			$("body").append("<div class='result'>로그인 성공</div>");//
+      			$(".result").animate({opacity:100},'slow').fadeIn('slow',function (){ 
+      			setTimeout("$('.result').hide()", 3000);
+      		});
+    		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
+});
 </script>
 <title>Menu</title>
 </head>
@@ -20,8 +35,8 @@ function viewSubmenu(view){
         <li class="topMenuLi">
             <a class="menuLink" href="http://unikys.tistory.com/category/Programming%20Lecture">MENU1</a>
             <ul class="submenu">
-				<li><a href="viewSubmenu('board')" class="submenuLink">board</a></li>
-				<li><a href="controller?action=about" class="submenuLink">menu2</a></li>
+				<li><a href="#" class="submenuLink" name="boardListView">board</a></li>
+				<li><a href="#" class="submenuLink">menu2</a></li>
             </ul>
         </li>
         <li class="topMenuLi">
@@ -30,15 +45,21 @@ function viewSubmenu(view){
                 <li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">menu1</a></li>
             </ul>
         </li>
-        
-        <li class="topMenuLiLogin">
-            <a class="menuLink" href="<%=request.getContextPath()%>/controller?action=loginView">로그인</a>
-            <ul class="submenu">
-                <li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">로그인</a></li>
-                <li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">회원가입</a></li>
-            </ul>
-        </li>
     </ul>
+	<div class="topMenuLiLogin">
+	<c:choose>
+		<c:when test="${empty sessionScope.id}">
+			<a class="menuLink" href="#" name="loginView">로그인</a>
+			<ul class="submenu">
+				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">로그인</a></li>
+				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">회원가입</a></li>
+			</ul>
+		</c:when>
+		<c:otherwise>
+			<a class="menuLink" href="#" name="logout">로그아웃</a>
+		</c:otherwise>
+	</c:choose>
+	</div>
 </nav>
 </center>
 </body>
