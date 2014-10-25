@@ -8,12 +8,12 @@
 		SELECT * FROM reply WHERE no=#{no}
 	</select>
 	<insert id="insertOne" parameterType="reply">
-		INSERT INTO reply (sequence_reply_no.NEXTVAL, #{bno}, #{contents}, #{days}, #{id})
+		INSERT INTO reply VALUES (sequence_reply_no.NEXTVAL, #{bNo}, #{contents}, TO_CHAR(SYSDATE, 'yyyy/mm/dd hh24/mi/ss'), #{id})
 	</insert>
 	<update id="updateOne" parameterType="reply">
 		UPDATE reply SET contents=#{contents},  WHERE no=#{no}
 	</update>
-	<delete id="deleteOne" parameterType="int">
-		DELETE FROM reply WHERE no=#{no}
+	<delete id="deleteOne" parameterType="HashMap">
+		DELETE FROM reply WHERE no=#{no} AND id=#{id}
 	</delete> 
 </mapper>

@@ -9,16 +9,13 @@
 <script src="js/httpRequest.js"></script>
 <script>
 $(document).ready(function(){
-	$("a").click(function(){
+	$("li a").click(function(){
+		console.log($(this));
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
       			$("#main").html(result);
-      			$("body").append("<div class='result'>로그인 성공</div>");//
-      			$(".result").animate({opacity:100},'slow').fadeIn('slow',function (){ 
-      			setTimeout("$('.result').hide()", 3000);
-      		});
-    		},
+      		},
     		error:function(xhr){
     			alert("error 발생시 호출되는 블록");
 			}
@@ -49,14 +46,18 @@ $(document).ready(function(){
 	<div class="topMenuLiLogin">
 	<c:choose>
 		<c:when test="${empty sessionScope.id}">
+		<ul>
+			<li>
 			<a class="menuLink" href="#" name="loginView">로그인</a>
 			<ul class="submenu">
 				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">로그인</a></li>
 				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">회원가입</a></li>
 			</ul>
+			</li>
+		</ul>
 		</c:when>
 		<c:otherwise>
-			<a class="menuLink" href="#" name="logout">로그아웃</a>
+			<a class="menuLink" href="controller?action=logout" name="logout">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 	</div>

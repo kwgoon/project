@@ -1,13 +1,13 @@
 @CHARSET "EUC-KR";
 
 div.result	{
-	position: absolute;
-	z-index: -5;
-	top: -50px;
+	position: relative;
+	z-index: 10;
+	top: 0px;
 	width: 200px;
 	padding: 10px;
 	border: 2px solid #526BBE;
-	margin: auto;
+	margin: 0 auto;
 	background-color: #E9F3FF;
 	text-align: center;
 	color: #526BBE;

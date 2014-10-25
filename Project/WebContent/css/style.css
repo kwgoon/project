@@ -2,78 +2,78 @@
 
 #container	{ background-color:#F0EAE8; width:100%; margin:0 auto; padding:0; position: relative;}
 #header		{ background-color:#526BBE; width:100%; height:80px; position: fixed;}
-#content	{ background-color:#F5E4DB; width:100%; height:150px; }
-#main		{ background-color:#E8D3D3; clear:both; height:1000px; }
+#content	{ background-color:#F5E4DB; width:100%; height:150px; text-align: center; z-index: 8;}
+#main		{ background-color:white; clear:both; height:auto; }
 
 body {margin: 0 0 0 0;}
-/* 파랑: #526BBE 회색빛파랑: #5B6882 #1bbae1 #428bca #394263 */
+/* �뚮옉: #526BBE �뚯깋鍮쏇뙆�� #5B6882 #1bbae1 #428bca #394263 */
 #topMenu {
-     height: 80px;  /* 메인 메뉴의 높이 */
-     width: 850px;  /* 메인 메뉴의 넓이 */
+     height: 80px;  /* 硫붿씤 硫붾돱���믪씠 */
+     width: 850px;  /* 硫붿씤 硫붾돱���볦씠 */
 }
-#topMenu ul {           /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
-    list-style-type: none;  /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
-    margin: 0px;            /* 메인 메뉴 안의 ul의 margin을 없앰 */
-    padding: 0px;           /* 메인 메뉴 안의 ul의 padding을 없앰 */
+#topMenu ul {           /* 硫붿씤 硫붾돱 �덉쓽 ul���ㅼ젙�� �곸쐞硫붾돱��ul+�섏쐞 硫붾돱��ul */
+    list-style-type: none;  /* 硫붿씤 硫붾돱 �덉쓽 ul �대���紐⑸줉 �쒖떆瑜��놁븷以�*/
+    margin: 0px;            /* 硫붿씤 硫붾돱 �덉쓽 ul��margin���놁빊 */
+    padding: 0px;           /* 硫붿씤 硫붾돱 �덉쓽 ul��padding���놁빊 */
 }
-#topMenu ul li {            /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
-    list-style-type: none;  /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
-    color: white;               /* 글씨 색을 흰색으로 설정 */
-    background-color: #526BBE;  /* 배경 색을 RGB(2D2D2D)로 설정 */
-    float: left;                /* 왼쪽으로 나열되도록 설정 */
-    line-height: 50px;          /* 텍스트 한 줄의 높이를 30px로 설정 */
-    vertical-align: middle;     /* 세로 정렬을 가운데로 설정 */
-    text-align: center;         /* 텍스트를 가운데로 정렬 */
-    position: relative;         /* 해당 li 태그 내부의 top/left 포지션 초기화 */
+#topMenu ul li {            /* 硫붿씤 硫붾돱 �덉뿉 ul �쒓렇 �덉뿉 �덈뒗 li �쒓렇���ㅽ����곸슜(�곸쐞/�섏쐞硫붾돱 紐⑤몢) */
+    list-style-type: none;  /* 硫붿씤 硫붾돱 �덉쓽 ul �대���紐⑸줉 �쒖떆瑜��놁븷以�*/
+    color: white;               /* 湲�뵪 �됱쓣 �곗깋�쇰줈 �ㅼ젙 */
+    background-color: #526BBE;  /* 諛곌꼍 �됱쓣 RGB(2D2D2D)濡��ㅼ젙 */
+    float: left;                /* �쇱そ�쇰줈 �섏뿴�섎룄濡��ㅼ젙 */
+    line-height: 50px;          /* �띿뒪����以꾩쓽 �믪씠瑜�30px濡��ㅼ젙 */
+    vertical-align: middle;     /* �몃줈 �뺣젹��媛�슫�곕줈 �ㅼ젙 */
+    text-align: center;         /* �띿뒪�몃� 媛�슫�곕줈 �뺣젹 */
+    position: relative;         /* �대떦 li �쒓렇 �대���top/left �ъ���珥덇린��*/
 }
-.menuLink {           /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
-    text-decoration:none;               /* a 태그의 꾸밈 효과 제거 */
-    display: block;                     /* a 태그의 클릭 범위를 넓힘 */
-    width: 150px;                       /* 기본 넓이를 150px로 설정 */
+.menuLink {           /* �곸쐞 硫붾돱���섏쐞 硫붾돱��a �쒓렇��怨듯넻�쇰줈 �ㅼ젙���ㅽ���*/
+    text-decoration:none;               /* a �쒓렇��袁몃컝 �④낵 �쒓굅 */
+    display: block;                     /* a �쒓렇���대┃ 踰붿쐞瑜��볧옒 */
+    width: 150px;                       /* 湲곕낯 �볦씠瑜�150px濡��ㅼ젙 */
     line-height: 80px;
-    font-size: 13px;                    /* 폰트 사이즈를 12px로 설정 */
-    font-weight: bold;                  /* 폰트를 굵게 설정 */
-    font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+    font-size: 13px;                    /* �고듃 �ъ씠利덈� 12px濡��ㅼ젙 */
+    font-weight: bold;                  /* �고듃瑜�援듦쾶 �ㅼ젙 */
+    font-family: "Trebuchet MS", Dotum; /* 湲곕낯 �고듃瑜��곸뼱/�쒓� �쒖꽌��줈 �ㅼ젙 */
 }
-.submenuLink {           /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
-    text-decoration:none;               /* a 태그의 꾸밈 효과 제거 */
-    display: block;                     /* a 태그의 클릭 범위를 넓힘 */
-    width: 200px;                       /* 기본 넓이를 150px로 설정 */
-    font-size: 13px;                    /* 폰트 사이즈를 12px로 설정 */
-    font-weight: bold;                  /* 폰트를 굵게 설정 */
-    font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+.submenuLink {           /* �곸쐞 硫붾돱���섏쐞 硫붾돱��a �쒓렇��怨듯넻�쇰줈 �ㅼ젙���ㅽ���*/
+    text-decoration:none;               /* a �쒓렇��袁몃컝 �④낵 �쒓굅 */
+    display: block;                     /* a �쒓렇���대┃ 踰붿쐞瑜��볧옒 */
+    width: 200px;                       /* 湲곕낯 �볦씠瑜�150px濡��ㅼ젙 */
+    font-size: 13px;                    /* �고듃 �ъ씠利덈� 12px濡��ㅼ젙 */
+    font-weight: bold;                  /* �고듃瑜�援듦쾶 �ㅼ젙 */
+    font-family: "Trebuchet MS", Dotum; /* 湲곕낯 �고듃瑜��곸뼱/�쒓� �쒖꽌��줈 �ㅼ젙 */
 }
-.menuLink {     /* 상위 메뉴의 글씨색을 흰색으로 설정 */
+.menuLink {     /* �곸쐞 硫붾돱��湲�뵪�됱쓣 �곗깋�쇰줈 �ㅼ젙 */
     color: white;
 }
-.topMenuLi:hover .menuLink {    /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
-    color: #526BBE;                 /* 글씨 색 빨간색 */
-    background-color: white;  /* 배경색을 밝은 회색으로 설정 */
+.topMenuLi:hover .menuLink {    /* �곸쐞 硫붾돱��li��留덉슦�ㅼ삤踰��섏뿀�����ㅽ����ㅼ젙 */
+    color: #526BBE;                 /* 湲�뵪 ��鍮④컙��*/
+    background-color: white;  /* 諛곌꼍�됱쓣 諛앹� �뚯깋�쇰줈 �ㅼ젙 */
 }
-.submenuLink {          /* 하위 메뉴의 a 태그 스타일 설정 */
-    color: #2d2d2d;             /* 글씨 색을 RGB(2D2D2D)로 설정 */
-    background-color: white;    /* 배경색을 흰색으로 설정 */
-    margin-top: -1px;           /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설덩 */
+.submenuLink {          /* �섏쐞 硫붾돱��a �쒓렇 �ㅽ����ㅼ젙 */
+    color: #2d2d2d;             /* 湲�뵪 �됱쓣 RGB(2D2D2D)濡��ㅼ젙 */
+    background-color: white;    /* 諛곌꼍�됱쓣 �곗깋�쇰줈 �ㅼ젙 */
+    margin-top: -1px;           /* ��移몄쓽 �섎떒 �뚮몢由ъ� �꾨옒移몄쓽 �곷떒 �뚮몢由ш� 寃뱀퀜吏�룄濡��ㅻ뜦 */
 }
-.longLink {     /* 좀 더 긴 메뉴 스타일 설정 */
-    width: 190px;   /* 넓이는 190px로 설정 */
+.longLink {     /* 醫���湲�硫붾돱 �ㅽ����ㅼ젙 */
+    width: 190px;   /* �볦씠��190px濡��ㅼ젙 */
 }
-.submenu {              /* 하위 메뉴 스타일 설정 */
-    list-style-type: none;  /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
-    position: absolute;     /* html의 flow에 영향을 미치지 않게 absolute 설정 */
-    height: 0px;            /* 초기 높이는 0px로 설정 */
-    overflow: hidden;       /* 실 내용이 높이보다 커지면 해당 내용 감춤 */
-    transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */
-    -webkit-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */
-    -moz-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */
-    -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */
+.submenu {              /* �섏쐞 硫붾돱 �ㅽ����ㅼ젙 */
+    list-style-type: none;  /* 硫붿씤 硫붾돱 �덉쓽 ul �대���紐⑸줉 �쒖떆瑜��놁븷以�*/
+    position: absolute;     /* html��flow���곹뼢��誘몄튂吏��딄쾶 absolute �ㅼ젙 */
+    height: 0px;            /* 珥덇린 �믪씠��0px濡��ㅼ젙 */
+    overflow: hidden;       /* ���댁슜���믪씠蹂대떎 而ㅼ�硫��대떦 �댁슜 媛먯땄 */
+    transition: height .2s; /* height瑜�蹂�솕 �쒖섟����0.2珥덇컙 蹂�솕 �섎룄濡��ㅼ젙(湲곕낯) */
+    -webkit-transition: height .2s; /* height瑜�蹂�솕 �쒖섟����0.2珥덇컙 蹂�솕 �섎룄濡��ㅼ젙(援щ쾭���щ＼/�ы뙆�쇈뀭) */
+    -moz-transition: height .2s; /* height瑜�蹂�솕 �쒖섟����0.2珥덇컙 蹂�솕 �섎룄濡��ㅼ젙(援щ쾭���뚰룺) */
+    -o-transition: height .2s; /* height瑜�蹂�솕 �쒖섟����0.2珥덇컙 蹂�솕 �섎룄濡��ㅼ젙(援щ쾭���ㅽ럹�� */
 }
-.topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
-    height: auto;           /* 높이를 93px로 설정 */
+.topMenuLi:hover .submenu { /* �곸쐞 硫붾돱��留덉슦��紐⑤쾭��寃쎌슦 洹��덉쓽 �섏쐞 硫붾돱 �ㅽ����ㅼ젙 */
+    height: auto;           /* �믪씠瑜�93px濡��ㅼ젙 */
 }
-.submenuLink:hover {        /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
-    color: white;                 /* 글씨색을 빨간색으로 설정 */
-    background-color: #526BBE;  /* 배경을 RGB(DDDDDD)로 설정 */
+.submenuLink:hover {        /* �섏쐞 硫붾돱��a �쒓렇��留덉슦���ㅻ쾭 �ㅽ����ㅼ젙 */
+    color: white;                 /* 湲�뵪�됱쓣 鍮④컙�됱쑝濡��ㅼ젙 */
+    background-color: #526BBE;  /* 諛곌꼍��RGB(DDDDDD)濡��ㅼ젙 */
 }
 .topMenuLiLogin {
 	float:right;

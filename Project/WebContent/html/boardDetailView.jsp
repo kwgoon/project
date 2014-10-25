@@ -1,30 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<script src="js/httpRequest.js"></script>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <script>
+var check = false;
 $(document).ready(function(){
 	$("#replyView").click(function(){
-	    $.ajax({
-    		url: "controller?action="+$(this).attr("name"),
-    		success:function(result){
-      			$("#reply").html(result);
-    		},
-    		error:function(xhr){
-    			alert("´ñ±Û ¸ñ·ÏÀ» ºÒ·¯¿Ã ¼ö ¾ø½À´Ï´Ù.");
-			}
- 		});
+		if(check == false){
+		    $.ajax({
+	    		url:"controller?action="+$(this).attr("name"),
+	    		success:function(result){
+	      			$("#reply").html(result);
+	      			$("#reply").show();
+	      			check = true;
+	    		},
+	    		error:function(xhr){
+	    			msg('ëŒ“ê¸€ ëª©ë¡ì„ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.');
+				}
+	 		});
+		}else{
+			check = false;
+			$("#reply").hide();
+		}
+	});
+	$("#replySubmit").click(function(){
+		var contents = document.replyInput.contents.value;
+		if(contents != "" && contents != null){
+			console.log($("#contents").val());
+			$.ajax({
+		    	type:"POST",
+		    	url:"controller?action=replyInput",
+				//data:"contents=" + $("#contents").val() + "&bNo="+$("#bNo").val(),
+				data:$("form").serialize(),
+	    		success:function(result){
+	    			$("#reply").html(result);
+	    			document.replyInput.contents.value = "";
+	    			msg('ëŒ“ê¸€ ì…ë ¥ ì„±ê³µ');
+	    		},
+	    		error:function(xhr){
+	    			msg('ëŒ“ê¸€ ë“±ë¡ ì‹¤íŒ¨');
+				}
+	 		});
+		}else{
+			msg('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.');
+		}
 	});
 });
 </script>
-
 <table class="t_e">
 	<tr>
 		<td>${requestScope.board.title}</td>
 	<tr>
-		<td align="right">${requestScope.board.days} ${requestScope.board.id} Á¶È¸¼ö:${requestScope.board.count}</td>
+		<td align="right">${requestScope.board.days} ${requestScope.board.id} ì¡°íšŒìˆ˜:${requestScope.board.count}</td>
 	</tr>
 	<tr>
 		<td>${requestScope.board.contents}</td>
 	</tr>
 </table>
-<a href="#" id="replyView" name="replyView&bNo=${requestScope.board.no}">´ñ±Û</a>
+<div style="width: 700px; margin: auto; padding-top: 20px;"><a href="#" id="replyView" name="replyView&bNo=${requestScope.board.no}">ëŒ“ê¸€</a></div>
 <div id="reply"></div>
+<br>
+<form name="replyInput" method="post"> 
+	<input type="hidden" name="bNo" id="bNo" value="${requestScope.board.no}">
+	<div align="center" style="margin: 0 auto; vertical-align: middle;">
+		<textarea rows="5" style="width: 640px" name="contents" id="contents"></textarea>
+		<input id="replySubmit" type="button" value="ë“±ë¡" style="height: 50px;">
+	</div>
+</form>

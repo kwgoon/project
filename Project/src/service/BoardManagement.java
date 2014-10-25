@@ -51,7 +51,7 @@ public class BoardManagement{
 		}
 		return result;
 	}
-	public static List<ReplyDTO> selectReplyAll(String bNo) throws SQLException, RecordNotFoundException{
+	public static List<ReplyDTO> selectReplyAll(int bNo) throws SQLException, RecordNotFoundException{
 		List<ReplyDTO> selectAll = ReplyDAO.selectAll(bNo);
 
 		if(selectAll == null){
@@ -59,5 +59,20 @@ public class BoardManagement{
 		}
 		return selectAll;
 	}
-
+	public static int replyDelete(int no, String id) throws SQLException, RecordNotFoundException{
+		int result = ReplyDAO.delete(no, id);
+		
+		if(result == 0){
+			throw new RecordNotFoundException();
+		}
+		return result;
+	}
+	public static int replyInsert(ReplyDTO reply) throws SQLException, DuplicatedException{
+		int result = ReplyDAO.insert(reply);
+		
+		if(result == 0){
+			throw new DuplicatedException();
+		}
+		return result;
+	}
 }

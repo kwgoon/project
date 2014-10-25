@@ -8,7 +8,13 @@ public class ReplyDTO{
 	private String id;
 	
 	public ReplyDTO(){}
-	public ReplyDTO(int no, int bNo, String contents, String days, String id){
+	public ReplyDTO(int bNo, String contents, String id){
+		this.bNo = bNo;
+		this.contents = contents;
+		this.id = id;
+	}
+	public ReplyDTO(int no, int bNo, String contents, String days, String id) {
+		super();
 		this.no = no;
 		this.bNo = bNo;
 		this.contents = contents;

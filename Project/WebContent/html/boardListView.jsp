@@ -10,7 +10,7 @@ $(document).ready(function(){
       			$("#main").html(result);
     		},
     		error:function(xhr){
-    			alert("error 발생시 호출되는 블록");
+    			msg('글 목록을 불러올 수 없습니다.');
 			}
  		});
 	});

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import model.domain.BoardDTO;
 import model.domain.ReplyDTO;
 import model.domain.UsersDTO;
 import service.BoardManagement;
+import exception.DuplicatedException;
 import exception.RecordNotFoundException;
 
 public class Controller extends HttpServlet{
@@ -40,6 +42,10 @@ public class Controller extends HttpServlet{
 			boardDetailView(request, response);
 		}else if(action.equals("replyView")){
 			replyView(request, response);
+		}else if(action.equals("replyInput")){
+			replyInput(request, response);
+		}else if(action.equals("replyDel")){
+			replyDel(request, response);
 		}
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -101,14 +107,45 @@ public class Controller extends HttpServlet{
 		List<ReplyDTO> allList = null;
 		try {
 			if(bNo != null && bNo != ""){
-				allList = BoardManagement.selectReplyAll(bNo);
+				allList = BoardManagement.selectReplyAll(Integer.parseInt(bNo));
 				request.setAttribute("allList", allList);
 				request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (RecordNotFoundException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	protected void replyInput(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String bNo = request.getParameter("bNo");
+		String contents = request.getParameter("contents");
+		HttpSession session = request.getSession();
+		int result = 0;
+		List<ReplyDTO> allList = null;
+		try {
+			result = BoardManagement.replyInsert(new ReplyDTO(Integer.parseInt(bNo), contents, (String)session.getAttribute("id")));
+			replyView(request, response);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (DuplicatedException e) {
+			e.printStackTrace();
+		}
+	}
+	protected void replyDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String no = request.getParameter("no");
+		HttpSession session = request.getSession();
+		int result = 0;
+		try {
+			result = BoardManagement.replyDelete(Integer.parseInt(no), (String)session.getAttribute("id"));
+			//request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

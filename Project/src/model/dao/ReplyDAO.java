@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import model.domain.ReplyDTO;
@@ -10,7 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import util.DBUtil;
 
 public class ReplyDAO{
-	public static List<ReplyDTO> selectAll(String bNo) throws SQLException{
+	public static List<ReplyDTO> selectAll(int bNo) throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		List<ReplyDTO> selectAll = null;
 		
@@ -54,12 +55,15 @@ public class ReplyDAO{
 		}
 		return value;
 	}
-	public static int delete(int no) throws SQLException{
+	public static int delete(int no, String id) throws SQLException{
 		SqlSession session = DBUtil.getSession(true);
+		HashMap map = new HashMap();
+		map.put("no", no);
+		map.put("id", id);
 		int value = 0;
 		
 		try{
-			value = session.update("reply.deleteOne", no);
+			value = session.update("reply.deleteOne", map);
 		}finally{
 			session.close();
 		}
