@@ -15,7 +15,7 @@
 <script src="js/jquery-1.11.1.js"></script>
 <script>
 function msg(str){
-	$("#content").append("<div class='result'>"+str+"</div>");
+	$("#topMenu").append("<div class='result'>"+str+"</div>");
 		$(".result").animate({opacity:100},'slow').fadeIn('slow',function (){ 
 		setTimeout("$('.result').remove()", 3000);});
 } 

@@ -5,17 +5,20 @@
 		SELECT * FROM students
 	</select>
 	<select id="selectOne" parameterType="String" resultType="students">
-		SELECT * FROM students WHERE code=#{code}
+		SELECT * FROM students WHERE code=upper(#{code})
 	</select>
 	<insert id="insertOne" parameterType="students">
-		INSERT INTO students VALUES (seq_code.nextval, #{title}, #{type}, #{content}, #{days}, #{time}, #{userId})
+		INSERT INTO students VALUES (upper(#{code}), #{pw}, #{name}, #{company}, #{email})
 	</insert>
 	<update id="updateOne" parameterType="students">
 		UPDATE students 
-		SET name=#{name}, company=#{company}, email=#{email} 
-		WHERE code=#{code}
+		SET pw=#{pw}, name=#{name}, company=#{company}, email=#{email}
+		WHERE code=upper(#{code})
 	</update>
 	<delete id="deleteOne" parameterType="String">
 		DELETE FROM students WHERE code=#{code}
-	</delete> 
+	</delete>
+	<select id="login" parameterType="HashMap" resultType="students">
+		SELECT * FROM students WHERE code=upper(#{code}) AND pw=#{pw} 
+	</select>
 </mapper>

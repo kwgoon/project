@@ -1,0 +1,2 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+callback([{"code":"UCAMP20A001","name":"박명미","email":"mm@mm.com"},{"code":"UCAMP20A002","name":"공상복","email":"sb@sb.com"}])

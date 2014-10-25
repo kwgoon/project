@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.net.URLDecoder;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.UsersDAO;
+import model.dao.StudentsDAO;
 import model.domain.BoardDTO;
 import model.domain.ReplyDTO;
+import model.domain.StudentsDTO;
 import model.domain.UsersDTO;
 import service.BoardManagement;
+import service.LoginManagement;
 import exception.DuplicatedException;
 import exception.RecordNotFoundException;
 
@@ -85,13 +87,22 @@ public class Controller extends HttpServlet{
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		UsersDTO users = null;
+		Object obj = null;
 		HttpSession session = request.getSession();
 		
 		try{
-			users = UsersDAO.loginCheck(id, pw);
-			session.setAttribute("id", users.getId());
-			session.setAttribute("name", users.getName());
+			obj = LoginManagement.loginCheck(id, pw);
+			if(obj instanceof UsersDTO){
+				UsersDTO users = (UsersDTO) obj;
+				session.setAttribute("id", users.getId());
+				session.setAttribute("name", users.getName());
+				session.setAttribute("g", "t");
+			}else if(obj instanceof StudentsDTO){
+				StudentsDTO stu = (StudentsDTO) obj;
+				session.setAttribute("id", stu.getCode());
+				session.setAttribute("name", stu.getName());
+				session.setAttribute("g", "s");
+			}
 		}catch (SQLException e){
 			e.printStackTrace();
 		}
