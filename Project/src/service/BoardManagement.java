@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.dao.BoardDAO;
+import model.dao.ReplyDAO;
 import model.domain.BoardDTO;
+import model.domain.ReplyDTO;
 import exception.DuplicatedException;
 import exception.RecordNotFoundException;
 
@@ -49,4 +51,13 @@ public class BoardManagement{
 		}
 		return result;
 	}
+	public static List<ReplyDTO> selectReplyAll(String bNo) throws SQLException, RecordNotFoundException{
+		List<ReplyDTO> selectAll = ReplyDAO.selectAll(bNo);
+
+		if(selectAll == null){
+			throw new RecordNotFoundException();
+		}
+		return selectAll;
+	}
+
 }

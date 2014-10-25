@@ -10,12 +10,12 @@ import org.apache.ibatis.session.SqlSession;
 import util.DBUtil;
 
 public class ReplyDAO{
-	public static List<ReplyDTO> selectAll() throws SQLException{
+	public static List<ReplyDTO> selectAll(String bNo) throws SQLException{
 		SqlSession session = DBUtil.getSession();
 		List<ReplyDTO> selectAll = null;
 		
 		try{
-			selectAll = session.selectList("reply.selectAll");
+			selectAll = session.selectList("reply.selectAll", bNo);
 		}finally{
 			session.close();
 		}

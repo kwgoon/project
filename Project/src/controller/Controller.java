@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.UsersDAO;
 import model.domain.BoardDTO;
+import model.domain.ReplyDTO;
 import model.domain.UsersDTO;
 import service.BoardManagement;
 import exception.RecordNotFoundException;
@@ -37,6 +38,8 @@ public class Controller extends HttpServlet{
 			boardListView(request, response);
 		}else if(action.equals("boardDetailView")){
 			boardDetailView(request, response);
+		}else if(action.equals("replyView")){
+			replyView(request, response);
 		}
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -91,6 +94,22 @@ public class Controller extends HttpServlet{
 	protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 		session.invalidate();
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		response.sendRedirect("");
+	}
+	protected void replyView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String bNo = request.getParameter("bNo");
+		List<ReplyDTO> allList = null;
+		try {
+			if(bNo != null && bNo != ""){
+				allList = BoardManagement.selectReplyAll(bNo);
+				request.setAttribute("allList", allList);
+				request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
