@@ -39,6 +39,7 @@ $(document).ready(function(){
             <a class="menuLink" href="http://unikys.tistory.com/tag">MENU2</a>
             <ul class="submenu">
                 <li><a href="#" name="gallery" class="submenuLink">gallery</a></li>
+                <li><a href="#" name="classView" class="submenuLink">class</a></li>
             </ul>
         </li>
     </ul>

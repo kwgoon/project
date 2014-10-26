@@ -56,7 +56,12 @@ public class Controller extends HttpServlet{
 			replyDel(request, response);
 		}else if(action.equals("gallery")){
 			gallery(request, response);
+		}else if(action.equals("classView")){
+			classView(request, response);
 		}
+	}
+	protected void classView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("html/classView.html").forward(request, response);
 	}
 	protected void gallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("html/gallery.html").forward(request, response);
