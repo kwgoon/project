@@ -1,27 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-     <base href="localhost:8080/Project">
+    <base href="http://localhost:8082/Project/index.jsp">
     <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
     <title></title>
-    <link href="http://cdn.kendostatic.com/2014.2.1008/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2014.2.1008/styles/kendo.default.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2014.2.1008/styles/kendo.dataviz.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2014.2.1008/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
-    <script src="http://cdn.kendostatic.com/2014.2.1008/js/jquery.min.js"></script>
-    <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
-    <script src="http://cdn.kendostatic.com/2014.2.1008/js/kendo.all.min.js"></script>
+    <link href="css/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo.default.min.css" rel="stylesheet" />
+    <link href="css/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="css/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <script src="<c:url value='js/jquery.min.js'/>" ></script>
+    <script src="<c:url value='js/kendo.all.min.js'/>" ></script>
 </head>
 <body>
     <div id="example">
-    <script src="js/ucamp.js"></script>
+    <script src="<c:url value='js/ucamp.js'/>"></script>
     <div class="demo-section">
         <div id="listView"></div>
         <div id="pager" class="k-pager-wrap"></div>
     </div>
     <script type="text/x-kendo-template" id="template">
         <div class="student">
-            <img src="img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
+            <img src="http://localhost:8082/teampro/img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
             <h3>#:StudentName#</h3>
             <p>
 				<br>

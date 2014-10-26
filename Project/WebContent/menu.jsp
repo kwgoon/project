@@ -9,7 +9,7 @@
 <script src="js/httpRequest.js"></script>
 <script>
 $(document).ready(function(){
-	$("li a").click(function(){
+	$("#click").click(function(){
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
@@ -29,17 +29,17 @@ $(document).ready(function(){
 <nav id="topMenu">
     <ul>
         <li class="topMenuLi">
-            <a class="menuLink" href="http://unikys.tistory.com/category/Programming%20Lecture">MENU1</a>
+            <a class="menuLink">MENU1</a>
             <ul class="submenu">
-				<li><a href="#" class="submenuLink" name="boardListView">board</a></li>
-				<li><a href="#" class="submenuLink">menu2</a></li>
+				<li><a href="#" class="submenuLink" name="boardListView" id="click">board</a></li>
+				<li><a href="#" class="submenuLink" id="click">menu2</a></li>
             </ul>
         </li>
         <li class="topMenuLi">
-            <a class="menuLink" href="http://unikys.tistory.com/tag">MENU2</a>
+            <a class="menuLink">MENU2</a>
             <ul class="submenu">
-                <li><a href="#" name="gallery" class="submenuLink">gallery</a></li>
-                <li><a href="#" name="classView" class="submenuLink">class</a></li>
+                <li><a href="index.jsp?action=/html/gallery.jsp" name="gallery" class="submenuLink">gallery</a></li>
+                <li><a href="index.jsp?action=/html/classView.jsp" name="classView" class="submenuLink">class</a></li>
             </ul>
         </li>
     </ul>
@@ -48,10 +48,10 @@ $(document).ready(function(){
 		<c:when test="${empty sessionScope.id}">
 		<ul>
 			<li>
-			<a class="menuLink" href="#" name="loginView">로그인</a>
+			<a href="#" class="menuLink" name="loginView" id="click">로그인</a>
 			<ul class="submenu">
-				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">로그인</a></li>
-				<li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">회원가입</a></li>
+				<li><a class="submenuLink" id="click">로그인</a></li>
+				<li><a class="submenuLink" id="click" >회원가입</a></li>
 			</ul>
 			</li>
 		</ul>

@@ -10,15 +10,10 @@
 <link rel="stylesheet" type="text/css" href="css/table.css" />
 <link rel="stylesheet" type="text/css" href="css/result.css" />
 <script src="js/jquery-1.11.1.js"></script>
-<script src="js/jquery.fancybox-1.3.4.pack.js"></script>
-<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
 <title>Project</title>
 </head>
 <body>
 <script>
-/* $(document).ready(function(){
-	$(".fancybox").fancybox(  {href : 'html/writeBoard.jsp'} ); 
-}); */
 function readying(){
 	alert("준비중입니다.");
 }

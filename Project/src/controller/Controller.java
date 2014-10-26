@@ -61,7 +61,7 @@ public class Controller extends HttpServlet{
 		}
 	}
 	protected void classView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.getRequestDispatcher("html/classView.html").forward(request, response);
+		request.getRequestDispatcher("html/classView.jsp").forward(request, response);
 	}
 	protected void gallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("html/gallery.html").forward(request, response);
