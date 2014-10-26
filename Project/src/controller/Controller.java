@@ -54,7 +54,12 @@ public class Controller extends HttpServlet{
 			replyInput(request, response);
 		}else if(action.equals("replyDel")){
 			replyDel(request, response);
+		}else if(action.equals("gallery")){
+			gallery(request, response);
 		}
+	}
+	protected void gallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("html/gallery.html").forward(request, response);
 	}
 	protected void boardWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String title = request.getParameter("title");

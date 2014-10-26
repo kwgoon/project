@@ -10,7 +10,6 @@
 <script>
 $(document).ready(function(){
 	$("li a").click(function(){
-		console.log($(this));
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
@@ -39,7 +38,7 @@ $(document).ready(function(){
         <li class="topMenuLi">
             <a class="menuLink" href="http://unikys.tistory.com/tag">MENU2</a>
             <ul class="submenu">
-                <li><a href="#" name="gallery" onclick="location.href='html/gallery.html'" class="submenuLink">gallery</a></li>
+                <li><a href="#" name="gallery" class="submenuLink">gallery</a></li>
             </ul>
         </li>
     </ul>

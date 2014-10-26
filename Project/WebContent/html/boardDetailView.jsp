@@ -43,7 +43,15 @@ $(document).ready(function(){
 			msg('내용을 입력하세요.');
 		}
 	});
-	$(".boardModify").click(function(){
+	$(".boardUpdate").click(function(){
+		if($(this).val()=="수정"){
+			$(this).val("확인");
+			$("#contents").css({"readonly": ""});
+		}else{
+			$(this).val("수정");
+		}
+	});
+	$(".boardDelete").click(function(){
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		data: $("#detailBoard").serialize(),
@@ -63,7 +71,7 @@ $(document).ready(function(){
 			<table class="t_e">
 				<tr>
 					<td align="center">제목</td>
-					<td><input type="text" name="title" size="50" maxlength="100" value="${requestScope.board.title}"></td>
+					<td>${requestScope.board.title}</td>
 				</tr>
 				<tr height="1" bgcolor="#82B5DF">
 					<td colspan="4"><input type="hidden" name="no" value="${requestScope.board.no}"><input type="hidden" name="type" value="${requestScope.board.type}"></td>
@@ -76,7 +84,7 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 					<td align="center">내용</td>
-					<td><textarea name="contents" cols="50" rows="13">${requestScope.board.contents}</textarea></td>
+					<td><textarea name="contents" id="contents" cols="50" rows="13" readonly="readonly">${requestScope.board.contents}</textarea></td>
 				</tr>
 				<tr height="1" bgcolor="#82B5DF">
 					<td colspan="4"></td>
@@ -84,8 +92,8 @@ $(document).ready(function(){
 				<c:if test="${sessionScope.id == requestScope.board.id}">
 					<tr align="center">
 						<td colspan="2">
-							<button class="boardModify" name="boardUpdate">수정</button>&nbsp;
-							<button class="boardModify" name="boardDelete">삭제</button>
+							<input type="button" class="boardUpdate" name="boardUpdate" value="수정">
+							<button class="boardDelete" name="boardDelete">삭제</button>
 						</td>
 					</tr>
 				</c:if>

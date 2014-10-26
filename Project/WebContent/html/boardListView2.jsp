@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.416/styles/kendo.default.min.css">
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.416/styles/kendo.dataviz.min.css">
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.416/styles/kendo.dataviz.default.min.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery-1.11.1.js"></script>
     <script src="http://cdn.kendostatic.com/2014.2.1008/js/angular.min.js"></script>
     <script src="http://cdn.kendostatic.com/2014.1.416/js/kendo.all.min.js"></script>
 <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.416/styles/kendo.rtl.min.css">
