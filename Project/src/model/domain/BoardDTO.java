@@ -12,6 +12,19 @@ public class BoardDTO implements Serializable{
 	private int type;
 	
 	public BoardDTO(){}
+	public BoardDTO(int no, String title, String contents, String id, int type){
+		this.no = no;
+		this.title = title;
+		this.contents = contents;
+		this.id = id;
+		this.type = type;
+	}
+	public BoardDTO(String title, String contents, String id, int type){
+		this.title = title;
+		this.contents = contents;
+		this.id = id;
+		this.type = type;
+	}
 	public BoardDTO(int no, String title, String days, String id, int count, int type){
 		this.no = no;
 		this.title = title;

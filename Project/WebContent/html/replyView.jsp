@@ -24,6 +24,6 @@ $(document).ready(function(){
 		<button name="${reply.no}">»èÁ¦</button>
 	</c:if>
 	</div>
-	<textarea rows="5" style="width: 700px;" name="contents" readonly="readonly">${reply.contents}</textarea></div><br>
+	<textarea rows="5" style="width: 700px;" name="contents" readonly="readonly">${reply.contents}</textarea><br></div>
 </c:forEach>
 </div>

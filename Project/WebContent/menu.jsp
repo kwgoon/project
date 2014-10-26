@@ -39,7 +39,7 @@ $(document).ready(function(){
         <li class="topMenuLi">
             <a class="menuLink" href="http://unikys.tistory.com/tag">MENU2</a>
             <ul class="submenu">
-                <li><a href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C" class="submenuLink">menu1</a></li>
+                <li><a href="#" name="gallery" onclick="location.href='html/gallery.html'" class="submenuLink">gallery</a></li>
             </ul>
         </li>
     </ul>

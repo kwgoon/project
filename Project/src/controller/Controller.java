@@ -29,7 +29,7 @@ public class Controller extends HttpServlet{
 		process(request, response);
 	}
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String action = request.getParameter("action");
 		
 		if(action.equals("loginView")){
@@ -42,6 +42,12 @@ public class Controller extends HttpServlet{
 			boardListView(request, response);
 		}else if(action.equals("boardDetailView")){
 			boardDetailView(request, response);
+		}else if(action.equals("boardWrite")){
+			boardWrite(request, response);
+		}else if(action.equals("boardUpdate")){
+			boardUpdate(request, response);
+		}else if(action.equals("boardDelete")){
+			boardDelete(request, response);
 		}else if(action.equals("replyView")){
 			replyView(request, response);
 		}else if(action.equals("replyInput")){
@@ -49,6 +55,51 @@ public class Controller extends HttpServlet{
 		}else if(action.equals("replyDel")){
 			replyDel(request, response);
 		}
+	}
+	protected void boardWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String title = request.getParameter("title");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String contents = request.getParameter("contents");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		BoardDTO board = new BoardDTO(title, contents, id, type);
+		try {
+			BoardManagement.insert(board);
+		} catch (SQLException e) {
+			System.out.println(e.getStackTrace());
+		} catch (DuplicatedException e) {
+			System.out.println(e.getStackTrace());
+		}
+		response.sendRedirect("");
+	}
+	protected void boardUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		HttpSession session = request.getSession();
+		String no = request.getParameter("no");
+		String title = request.getParameter("title");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String contents = request.getParameter("contents");
+		String id = (String) session.getAttribute("id");
+		BoardDTO board = new BoardDTO(Integer.parseInt(no), title, contents, id, type);
+		try {
+			BoardManagement.update(board);
+		} catch (SQLException e) {
+			System.out.println(e.getStackTrace());
+		} catch (RecordNotFoundException e) {
+			System.out.println(e.getStackTrace());
+		}
+		response.sendRedirect("");
+	}
+	protected void boardDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String no = request.getParameter("no");
+		System.out.println(no);
+		try {
+			BoardManagement.delete(Integer.parseInt(no));
+		} catch (SQLException e) {
+			System.out.println(e.getStackTrace());
+		} catch (RecordNotFoundException e) {
+			System.out.println(e.getStackTrace());
+		}
+		response.sendRedirect("");
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try {

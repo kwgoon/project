@@ -31,7 +31,7 @@
 		<br>
 		<hr style="width: 21%">
 		<div align="center">
-		<a href="NewFile1.html"><font size="2" color="">ID/PW 찾기</font></a>&nbsp;|&nbsp;<a href="NewFile1.html"><font size="2">회원가입</font></a>
+		<a href="#" onclick="readying()"><font size="2" color="">ID/PW 찾기</font></a>&nbsp;|&nbsp;<a href="#" onclick="readying()"><font size="2">회원가입</font></a>
 		</div>
 	</form>
 	</div>

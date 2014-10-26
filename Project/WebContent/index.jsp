@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,11 +9,21 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/table.css" />
 <link rel="stylesheet" type="text/css" href="css/result.css" />
+<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+<script src="js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
 <title>Project</title>
 </head>
 <body>
 <script src="js/jquery-1.11.1.js"></script>
 <script>
+/* $(document).ready(function(){
+	$(".fancybox").fancybox(  {href : 'html/writeBoard.jsp'} ); 
+}); */
+function readying(){
+	alert("준비중입니다.");
+}
 function msg(str){
 	$("#topMenu").append("<div class='result'>"+str+"</div>");
 		$(".result").animate({opacity:100},'slow').fadeIn('slow',function (){ 

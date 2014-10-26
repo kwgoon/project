@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.416/styles/kendo.mobile.all.min.css">
 </head>
 <body>
-    
+
 <table id="grid">
     <colgroup>
 		<col style="width:10%"/>
@@ -27,16 +27,16 @@
 	</colgroup>
 	<thead>
 	    <tr>
-	        <th data-field="no">ë²ˆí˜¸</th>
-	        <th data-field="title">ì œëª©</th>
-	        <th data-field="days">ë‚ ì§œ</th>
-	        <th data-field="id">ì‘ì„±ì</th>
-	        <th data-field="count">ì¡°íšŒìˆ˜</th>
+	        <th data-field="no">¹øÈ£</th>
+	        <th data-field="title">Á¦¸ñ</th>
+	        <th data-field="days">³¯Â¥</th>
+	        <th data-field="id">ÀÛ¼ºÀÚ</th>
+	        <th data-field="count">Á¶È¸¼ö</th>
 	    </tr>
 	</thead>
 	<tbody>
 	<c:forEach items="${requestScope.allList}" var="board">		
-		<tr class="c1" id="boardDetailView&no=${board.no}">
+		<tr id="boardDetailView&no=${board.no}">
 			<td>${board.no}</td>
 			<td>${board.title}</td>
 			<td>${board.days}</td>

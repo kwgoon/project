@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<% request.setCharacterEncoding("utf-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <script>
 var check = false;
 $(document).ready(function(){
@@ -24,12 +25,11 @@ $(document).ready(function(){
 	$("#replySubmit").click(function(){
 		var contents = document.replyInput.contents.value;
 		if(contents != "" && contents != null){
-			console.log($("#contents").val());
 			$.ajax({
 		    	type:"POST",
 		    	url:"controller?action=replyInput",
 				//data:"contents=" + $("#contents").val() + "&bNo="+$("#bNo").val(),
-				data:$("form").serialize(),
+				data:$("#replyInput").serialize(),
 	    		success:function(result){
 	    			$("#reply").html(result);
 	    			document.replyInput.contents.value = "";
@@ -43,22 +43,61 @@ $(document).ready(function(){
 			msg('내용을 입력하세요.');
 		}
 	});
+	$(".boardModify").click(function(){
+	    $.ajax({
+    		url: "controller?action="+$(this).attr("name"),
+    		data: $("#detailBoard").serialize(),
+    		success:function(result){
+      			$("#main").html(result);
+    		},
+    		error:function(xhr){
+			}
+ 		});
+	});
 });
 </script>
+<form name="detailBoard" id="detailBoard">
 <table class="t_e">
 	<tr>
-		<td>${requestScope.board.title}</td>
-	<tr>
-		<td align="right">${requestScope.board.days} ${requestScope.board.id} 조회수:${requestScope.board.count}</td>
-	</tr>
-	<tr>
-		<td>${requestScope.board.contents}</td>
+		<td>
+			<table class="t_e">
+				<tr>
+					<td align="center">제목</td>
+					<td><input type="text" name="title" size="50" maxlength="100" value="${requestScope.board.title}"></td>
+				</tr>
+				<tr height="1" bgcolor="#82B5DF">
+					<td colspan="4"><input type="hidden" name="no" value="${requestScope.board.no}"><input type="hidden" name="type" value="${requestScope.board.type}"></td>
+				</tr>
+				<tr>
+					<td align="right" colspan="2">${requestScope.board.days} ${requestScope.board.id} 조회수:${requestScope.board.count}</td>
+				</tr>
+				<tr height="1" bgcolor="#82B5DF">
+					<td colspan="4"></td>
+				</tr>
+				<tr>
+					<td align="center">내용</td>
+					<td><textarea name="contents" cols="50" rows="13">${requestScope.board.contents}</textarea></td>
+				</tr>
+				<tr height="1" bgcolor="#82B5DF">
+					<td colspan="4"></td>
+				</tr>
+				<c:if test="${sessionScope.id == requestScope.board.id}">
+					<tr align="center">
+						<td colspan="2">
+							<button class="boardModify" name="boardUpdate">수정</button>&nbsp;
+							<button class="boardModify" name="boardDelete">삭제</button>
+						</td>
+					</tr>
+				</c:if>
+			</table>
+		</td>
 	</tr>
 </table>
+</form>
 <div style="width: 700px; margin: auto; padding-top: 20px;"><a href="#" id="replyView" name="replyView&bNo=${requestScope.board.no}">댓글</a></div>
 <div id="reply"></div>
 <br>
-<form name="replyInput" method="post"> 
+<form id="replyInput" name="replyInput" method="post"> 
 	<input type="hidden" name="bNo" id="bNo" value="${requestScope.board.no}">
 	<div align="center" style="margin: 0 auto; vertical-align: middle;">
 		<textarea rows="5" style="width: 640px" name="contents" id="contents"></textarea>

@@ -43,7 +43,7 @@ ALTER TABLE board ADD(CONSTRAINT board_no_pk PRIMARY KEY(no));
 ALTER TABLE reply ADD(CONSTRAINT reply_no_pk PRIMARY KEY(no));
 
 ALTER TABLE board ADD CONSTRAINT board_id_fk FOREIGN KEY(id) REFERENCES users(id);
-ALTER TABLE reply ADD CONSTRAINT reply_d_no_fk FOREIGN KEY(b_no) REFERENCES board(no);
+ALTER TABLE reply ADD CONSTRAINT reply_d_no_fk FOREIGN KEY(b_no) REFERENCES board(no) ON DELETE CASCADE;
 
 CREATE SEQUENCE sequence_board_no;
 CREATE SEQUENCE sequence_reply_no;
