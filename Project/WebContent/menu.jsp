@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +10,18 @@
 <script src="js/httpRequest.js"></script>
 <script>
 $(document).ready(function(){
-	$("#click").click(function(){
-		console.log($(this));
+	$(".submenuLink").click(function(){
+	    $.ajax({
+    		url: "controller?action="+$(this).attr("name"),
+    		success:function(result){
+      			$("#main").html(result);
+      		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
+	$(".menuLink").click(function(){
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
@@ -38,8 +49,8 @@ $(document).ready(function(){
         <li class="topMenuLi">
             <a class="menuLink">MENU2</a>
             <ul class="submenu">
-                <li><a href="index.jsp?action=/html/gallery.jsp" name="gallery" class="submenuLink">gallery</a></li>
-                <li><a href="index.jsp?action=/html/classView.jsp" name="classView" class="submenuLink">class</a></li>
+                <li><a href="index.jsp?link=/html/gallery.jsp" class="submenuLink">gallery</a></li>
+                <li><a href="index.jsp?link=/html/classView.jsp" class="submenuLink">class</a></li>
             </ul>
         </li>
     </ul>
@@ -47,7 +58,7 @@ $(document).ready(function(){
 	<c:choose>
 		<c:when test="${empty sessionScope.id}">
 		<ul>
-			<li><a href="#" class="menuLink" name="loginView" id="click">로그인</a></li>
+			<li><a href="#" class="menuLink" name="loginView">로그인</a>
 			<ul class="submenu">
 				<li><a class="submenuLink" id="click">로그인</a></li>
 				<li><a class="submenuLink" id="click">회원가입</a></li>

@@ -54,17 +54,14 @@ public class Controller extends HttpServlet{
 			replyInput(request, response);
 		}else if(action.equals("replyDel")){
 			replyDel(request, response);
-		}else if(action.equals("gallery")){
-			gallery(request, response);
-		}else if(action.equals("classView")){
-			classView(request, response);
 		}
 	}
 	protected void classView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("html/classView.jsp").forward(request, response);
 	}
 	protected void gallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.getRequestDispatcher("html/gallery.html").forward(request, response);
+		System.out.println("gallery");
+		request.getRequestDispatcher("html/gallery.jsp").forward(request, response);
 	}
 	protected void boardWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String title = request.getParameter("title");
@@ -101,15 +98,14 @@ public class Controller extends HttpServlet{
 	}
 	protected void boardDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String no = request.getParameter("no");
-		System.out.println(no);
 		try {
 			BoardManagement.delete(Integer.parseInt(no));
+			request.getRequestDispatcher("html/boardListView.jsp").forward(request, response);
 		} catch (SQLException e) {
 			System.out.println(e.getStackTrace());
 		} catch (RecordNotFoundException e) {
 			System.out.println(e.getStackTrace());
 		}
-		request.getRequestDispatcher("html/boardListView.jsp").forward(request, response);
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try {
@@ -193,10 +189,9 @@ public class Controller extends HttpServlet{
 		String bNo = request.getParameter("bNo");
 		String contents = request.getParameter("contents");
 		HttpSession session = request.getSession();
-		int result = 0;
-		List<ReplyDTO> allList = null;
+//		List<ReplyDTO> allList = null;
 		try {
-			result = BoardManagement.replyInsert(new ReplyDTO(Integer.parseInt(bNo), contents, (String)session.getAttribute("id")));
+			BoardManagement.replyInsert(new ReplyDTO(Integer.parseInt(bNo), contents, (String)session.getAttribute("id")));
 			replyView(request, response);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
@@ -209,10 +204,9 @@ public class Controller extends HttpServlet{
 	protected void replyDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String no = request.getParameter("no");
 		HttpSession session = request.getSession();
-		int result = 0;
 		try {
-			result = BoardManagement.replyDelete(Integer.parseInt(no), (String)session.getAttribute("id"));
-			//request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
+			BoardManagement.replyDelete(Integer.parseInt(no), (String)session.getAttribute("id"));
+			request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

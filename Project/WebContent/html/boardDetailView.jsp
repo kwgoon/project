@@ -28,7 +28,6 @@ $(document).ready(function(){
 			$.ajax({
 		    	type:"POST",
 		    	url:"controller?action=replyInput",
-				//data:"contents=" + $("#contents").val() + "&bNo="+$("#bNo").val(),
 				data:$("#replyInput").serialize(),
 	    		success:function(result){
 	    			$("#reply").html(result);
@@ -51,6 +50,7 @@ $(document).ready(function(){
 		}else{
 			$(this).val("수정");
 			$.ajax({
+				type: "POST",
 	    		url: "controller?action=boardUpdate",
 	    		data: $("#detailBoard").serialize(),
 	    		success:function(result){
@@ -66,12 +66,11 @@ $(document).ready(function(){
 	$(".boardDelete").click(function(){
 	    $.ajax({
 	    	type:"POST",
-    		url: "controller?action="+$(this).attr("name"),
+    		url: "controller?action=boardDelete",
     		data: "no="+document.detailBoard.no.value,
     		success:function(result){
-      			//$("#main").html(result);
-      			console.log(result);
-    			msg('게시글 삭제 성공');
+    			location.href='controller?action=boardListView';
+    			msg('게시글 삭제 성공'); 
     		},
     		error:function(xhr){
 			}
@@ -108,7 +107,8 @@ $(document).ready(function(){
 					<tr align="center">
 						<td colspan="2">
 							<input type="button" class="boardUpdate" name="boardUpdate" value="수정">
-							<button class="boardDelete" name="boardDelete">삭제</button>
+							<%-- <input type="button" class="boardDelete" onclick="javascript:location.href='controller?action=boardDelete&no=${requestScope.board.no}'" name="boardDelete" value="삭제"> --%>
+							<input type="button" class="boardDelete" value="삭제">
 						</td>
 					</tr>
 				</c:if>

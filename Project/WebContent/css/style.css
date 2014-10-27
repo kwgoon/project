@@ -2,7 +2,7 @@
 
 #container	{ background-color:#F0EAE8; width:100%; margin:0 auto; padding:0; position: relative;}
 #header		{ background-color:#526BBE; width:100%; height:80px; position: fixed;}
-#content	{ background-color:#F5E4DB; width:100%; height:150px; text-align: center; z-index: 8;}
+#content   { background-color:#F5E4DB;   margin:0px; padding: 10px 0px; color: #526BBE; text-align: center;}
 #main		{ background-color:white; clear:both; height:auto; }
 
 body {margin: 0 0 0 0;}
