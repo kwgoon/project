@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<script>
+$(document).ready(function(){
+	$("#login").click(function(){
+	    $.ajax({
+	    	type: "POST",
+			url: "controller?action=login",
+			data:$("form").serialize(),
+			success:function(result){
+				location.href="";
+	  			msg("로그인 성공");
+	  		},
+			error:function(xhr){
+			}
+		});
+	});
+});
+</script>
 <div align="center">
 	<form name="login" action="controller?action=login" method="post">
 		<table >
@@ -25,7 +35,7 @@
 				<td style="height: 42px; width: 322px"><input type="checkbox" name="logink" style=""/><font size="2">로그인 유지</font></td>
 			</tr>
 			<tr>
-				<td><input type="image" src="img/login2.png"/></td>
+				<td><input type="image" src="img/login2.png" id="login"/></td>
 			</tr>
 		</table>
 		<br>

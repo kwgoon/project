@@ -26,7 +26,7 @@ function msg(str){
 	<div id="container">
 		<div id="header"><jsp:include page="menu.jsp"/></div>
 		<div id="content"><jsp:include page="content.jsp"/></div>
-		<div id="main"><jsp:include page="main.jsp"/></div>
+		<div id="main"></div>
 	</div>
 </body>
 </html>

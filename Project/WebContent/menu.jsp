@@ -21,11 +21,23 @@ $(document).ready(function(){
 			}
  		});
 	});
-	$(".menuLink").click(function(){
+	$("#loginView").click(function(){
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
       			$("#main").html(result);
+      		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
+	$("#logout").click(function(){
+	    $.ajax({
+    		url: "controller?action=logout",
+    		success:function(result){
+    			location.href="";
+      			msg("로그아웃 성공");
       		},
     		error:function(xhr){
     			alert("error 발생시 호출되는 블록");
@@ -80,7 +92,7 @@ $(document).ready(function(){
 	<c:choose>
 		<c:when test="${empty sessionScope.id}">
 		<ul>
-			<li><a href="#" class="menuLink" name="loginView">로그인</a>
+			<li><a href="#" class="menuLink" name="loginView" id="loginView">로그인</a>
 			<ul class="submenu">
 				<li><a class="submenuLink" id="click">로그인</a></li>
 				<li><a class="submenuLink" id="click">회원가입</a></li>
@@ -89,7 +101,8 @@ $(document).ready(function(){
 		</ul>
 		</c:when>
 		<c:otherwise>
-			<a class="menuLink" href="controller?action=logout" name="logout">로그아웃</a>
+			<!-- <a class="menuLink" href="controller?action=logout" name="logout">로그아웃</a> -->
+			<a class="menuLink" href="#" id="logout" name="logout">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 	</div>

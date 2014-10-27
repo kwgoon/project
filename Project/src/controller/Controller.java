@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.StudentsDAO;
 import model.domain.BoardDTO;
 import model.domain.ReplyDTO;
 import model.domain.StudentsDTO;
@@ -64,7 +62,6 @@ public class Controller extends HttpServlet{
 		request.getRequestDispatcher("html/classView.jsp").forward(request, response);
 	}
 	protected void galleryView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		System.out.println("gallery");
 		request.getRequestDispatcher("html/gallery.jsp").forward(request, response);
 	}
 	protected void boardWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -73,12 +70,14 @@ public class Controller extends HttpServlet{
 		String contents = request.getParameter("contents");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		BoardDTO board = new BoardDTO(title, contents, id, type);
-		try {
+		BoardDTO board = null;
+		
+		try{
+			board = new BoardDTO(title, contents, id, type);
 			BoardManagement.insert(board);
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			System.out.println(e.getStackTrace());
-		} catch (DuplicatedException e) {
+		}catch (DuplicatedException e){
 			System.out.println(e.getStackTrace());
 		}
 		response.sendRedirect("");
@@ -90,44 +89,49 @@ public class Controller extends HttpServlet{
 		int type = Integer.parseInt(request.getParameter("type"));
 		String contents = request.getParameter("contents");
 		String id = (String) session.getAttribute("id");
-		BoardDTO board = new BoardDTO(Integer.parseInt(no), title, contents, id, type);
-		try {
+		BoardDTO board = null;
+		
+		try{
+			board = new BoardDTO(Integer.parseInt(no), title, contents, id, type);
 			BoardManagement.update(board);
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			System.out.println(e.getStackTrace());
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			System.out.println(e.getStackTrace());
 		}
 		response.sendRedirect("");
 	}
 	protected void boardDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String no = request.getParameter("no");
-		try {
+		
+		try{
 			BoardManagement.delete(Integer.parseInt(no));
 			request.getRequestDispatcher("html/boardListView.jsp").forward(request, response);
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			System.out.println(e.getStackTrace());
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			System.out.println(e.getStackTrace());
 		}
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		try {
-			List<BoardDTO> allList = null;
+		List<BoardDTO> allList = null;
+
+		try{
 			allList = BoardManagement.selectAll();
 			if(allList != null){
 				request.setAttribute("allList", allList);
 			}
 			request.getRequestDispatcher("html/boardListView.jsp").forward(request, response);
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			System.out.println(e.getStackTrace());
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			System.out.println(e.getStackTrace());
 		}
 	}
 	protected void boardDetailView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String no = request.getParameter("no");
-		try {
+		
+		try{
 			if(no == "" || no == null){
 				return;
 			}
@@ -136,9 +140,9 @@ public class Controller extends HttpServlet{
 				request.setAttribute("board", board);
 			}
 			request.getRequestDispatcher("html/boardDetailView.jsp").forward(request, response);
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			e.printStackTrace();
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			e.printStackTrace();
 		}
 	}
@@ -172,20 +176,22 @@ public class Controller extends HttpServlet{
 	protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect("");
+		request.setAttribute("msg", "로그아웃 성공");
+		request.getRequestDispatcher("html/msg.jsp").forward(request, response);
 	}
 	protected void replyView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String bNo = request.getParameter("bNo");
 		List<ReplyDTO> allList = null;
-		try {
+		
+		try{
 			if(bNo != null && bNo != ""){
 				allList = BoardManagement.selectReplyAll(Integer.parseInt(bNo));
 				request.setAttribute("allList", allList);
 				request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			e.printStackTrace();
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			e.printStackTrace();
 		}
 	}
@@ -193,29 +199,30 @@ public class Controller extends HttpServlet{
 		String bNo = request.getParameter("bNo");
 		String contents = request.getParameter("contents");
 		HttpSession session = request.getSession();
-//		List<ReplyDTO> allList = null;
-		try {
+		
+		try{
 			BoardManagement.replyInsert(new ReplyDTO(Integer.parseInt(bNo), contents, (String)session.getAttribute("id")));
 			replyView(request, response);
-		} catch (NumberFormatException e) {
+		}catch (NumberFormatException e){
 			e.printStackTrace();
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			e.printStackTrace();
-		} catch (DuplicatedException e) {
+		}catch (DuplicatedException e){
 			e.printStackTrace();
 		}
 	}
 	protected void replyDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String no = request.getParameter("no");
 		HttpSession session = request.getSession();
-		try {
+		
+		try{
 			BoardManagement.replyDelete(Integer.parseInt(no), (String)session.getAttribute("id"));
 			request.getRequestDispatcher("html/replyView.jsp").forward(request, response);
-		} catch (NumberFormatException e) {
+		}catch (NumberFormatException e){
 			e.printStackTrace();
-		} catch (SQLException e) {
+		}catch (SQLException e){
 			e.printStackTrace();
-		} catch (RecordNotFoundException e) {
+		}catch (RecordNotFoundException e){
 			e.printStackTrace();
 		}
 	}

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DBUtil {
 	private static SqlSessionFactory factory = null;
+
 	static{
 		InputStream in = null;
 		try{
@@ -31,11 +32,9 @@ public class DBUtil {
 	public static SqlSession getSession(){
 		return factory.openSession();
 	}
-	
 	public static SqlSession getSession(boolean autocommit){
 		return factory.openSession(true);
 	}
-	
 	public static void close(SqlSession session, boolean commit){
 		if(session != null){
 			if(commit){
