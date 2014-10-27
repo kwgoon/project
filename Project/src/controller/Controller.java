@@ -54,12 +54,16 @@ public class Controller extends HttpServlet{
 			replyInput(request, response);
 		}else if(action.equals("replyDel")){
 			replyDel(request, response);
+		}else if(action.equals("classView")){
+			classView(request, response);
+		}else if(action.equals("galleryView")){
+			galleryView(request, response);
 		}
 	}
 	protected void classView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("html/classView.jsp").forward(request, response);
 	}
-	protected void gallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	protected void galleryView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("gallery");
 		request.getRequestDispatcher("html/gallery.jsp").forward(request, response);
 	}

@@ -32,6 +32,28 @@ $(document).ready(function(){
 			}
  		});
 	});
+	$("#galleryView").click(function(){
+	    $.ajax({
+    		url: "controller?action=galleryView",
+    		success:function(result){
+      			$("#main").html(result);
+      		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
+	$("#classView").click(function(){
+	    $.ajax({
+    		url: "controller?action=classView",
+    		success:function(result){
+      			$("#main").html(result);
+      		},
+    		error:function(xhr){
+    			alert("error 발생시 호출되는 블록");
+			}
+ 		});
+	});
 });
 </script>
 <title>Menu</title>
@@ -49,8 +71,8 @@ $(document).ready(function(){
         <li class="topMenuLi">
             <a class="menuLink">MENU2</a>
             <ul class="submenu">
-                <li><a href="index.jsp?link=/html/gallery.jsp" class="submenuLink">gallery</a></li>
-                <li><a href="index.jsp?link=/html/classView.jsp" class="submenuLink">class</a></li>
+                <li><a href="#" id="galleryView" class="submenuLink">gallery</a></li>
+                <li><a href="#" id="classView" class="submenuLink">class</a></li>
             </ul>
         </li>
     </ul>

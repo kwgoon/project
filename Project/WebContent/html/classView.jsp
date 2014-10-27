@@ -36,7 +36,7 @@
         $(function() {
             var dataSource = new kendo.data.DataSource({
                 data: students,
-                pageSize: 12
+                pageSize: 19
             });
 
             $("#pager").kendoPager({
