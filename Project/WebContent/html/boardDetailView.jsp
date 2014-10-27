@@ -46,17 +46,32 @@ $(document).ready(function(){
 	$(".boardUpdate").click(function(){
 		if($(this).val()=="수정"){
 			$(this).val("확인");
-			$("#contents").css({"readonly": ""});
+			$(".titletd").html("<input type='text' id='title' name='title' value='${requestScope.board.title}'>");
+			$("#contents").removeAttr("readonly");
 		}else{
 			$(this).val("수정");
+			$.ajax({
+	    		url: "controller?action=boardUpdate",
+	    		data: $("#detailBoard").serialize(),
+	    		success:function(result){
+	      			$(".titletd").text($("#title").val());
+	      			$("#contents").attr("readonly","readonly");
+	    			msg('게시글 수정 성공');
+	    		},
+	    		error:function(xhr){
+				}
+	 		});
 		}
 	});
 	$(".boardDelete").click(function(){
 	    $.ajax({
+	    	type:"POST",
     		url: "controller?action="+$(this).attr("name"),
-    		data: $("#detailBoard").serialize(),
+    		data: "no="+document.detailBoard.no.value,
     		success:function(result){
-      			$("#main").html(result);
+      			//$("#main").html(result);
+      			console.log(result);
+    			msg('게시글 삭제 성공');
     		},
     		error:function(xhr){
 			}
@@ -71,7 +86,7 @@ $(document).ready(function(){
 			<table class="t_e">
 				<tr>
 					<td align="center">제목</td>
-					<td>${requestScope.board.title}</td>
+					<td class="titletd">${requestScope.board.title}</td>
 				</tr>
 				<tr height="1" bgcolor="#82B5DF">
 					<td colspan="4"><input type="hidden" name="no" value="${requestScope.board.no}"><input type="hidden" name="type" value="${requestScope.board.type}"></td>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="http://localhost:8082/Project/index.jsp">
+    <base href="http://localhost:8080/Project/index.jsp">
     <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
     <title></title>
     <link href="css/kendo.common.min.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
     </div>
     <script type="text/x-kendo-template" id="template">
         <div class="student">
-            <img src="http://localhost:8082/teampro/img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
+            <img src="http://localhost:8080/Project/img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
             <h3>#:StudentName#</h3>
             <p>
 				<br>

@@ -109,7 +109,7 @@ public class Controller extends HttpServlet{
 		} catch (RecordNotFoundException e) {
 			System.out.println(e.getStackTrace());
 		}
-		response.sendRedirect("");
+		request.getRequestDispatcher("html/boardListView.jsp").forward(request, response);
 	}
 	protected void boardListView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try {

@@ -10,6 +10,7 @@
 <script>
 $(document).ready(function(){
 	$("#click").click(function(){
+		console.log($(this));
 	    $.ajax({
     		url: "controller?action="+$(this).attr("name"),
     		success:function(result){
@@ -32,7 +33,6 @@ $(document).ready(function(){
             <a class="menuLink">MENU1</a>
             <ul class="submenu">
 				<li><a href="#" class="submenuLink" name="boardListView" id="click">board</a></li>
-				<li><a href="#" class="submenuLink" id="click">menu2</a></li>
             </ul>
         </li>
         <li class="topMenuLi">
@@ -47,11 +47,10 @@ $(document).ready(function(){
 	<c:choose>
 		<c:when test="${empty sessionScope.id}">
 		<ul>
-			<li>
-			<a href="#" class="menuLink" name="loginView" id="click">로그인</a>
+			<li><a href="#" class="menuLink" name="loginView" id="click">로그인</a></li>
 			<ul class="submenu">
 				<li><a class="submenuLink" id="click">로그인</a></li>
-				<li><a class="submenuLink" id="click" >회원가입</a></li>
+				<li><a class="submenuLink" id="click">회원가입</a></li>
 			</ul>
 			</li>
 		</ul>
