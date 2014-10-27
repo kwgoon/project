@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="http://localhost:8080/Project/index.jsp">
     <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
     <title></title>
     <link href="css/kendo.common.min.css" rel="stylesheet" />
@@ -23,7 +22,7 @@
     </div>
     <script type="text/x-kendo-template" id="template">
         <div class="student">
-            <img src="http://localhost:8080/Project/img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
+            <img src="<%= request.getContextPath()%>/img/UCAMP/#= StudentID #.PNG" alt="#: StudentName # image" />
             <h3>#:StudentName#</h3>
             <p>
 				<br>
@@ -37,7 +36,7 @@
         $(function() {
             var dataSource = new kendo.data.DataSource({
                 data: students,
-                pageSize: 19
+                pageSize: 12
             });
 
             $("#pager").kendoPager({
