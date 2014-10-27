@@ -40,7 +40,8 @@ $(document).ready(function(){
       			msg("로그아웃 성공");
       		},
     		error:function(xhr){
-    			alert("error 발생시 호출되는 블록");
+      			msg("로그아웃 성공");
+				location.href="";
 			}
  		});
 	});
