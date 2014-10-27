@@ -69,8 +69,16 @@ $(document).ready(function(){
     		url: "controller?action=boardDelete",
     		data: "no="+document.detailBoard.no.value,
     		success:function(result){
-    			location.href='controller?action=boardListView';
-    			msg('게시글 삭제 성공'); 
+    			$.ajax({
+    	    		url: "controller?action=boardListView",
+    	    		success:function(result){
+    	      			$("#main").html(result);
+    	      			msg('게시글 삭제 성공'); 
+    	      		},
+    	    		error:function(xhr){
+    	    			alert("error 발생시 호출되는 블록");
+    				}
+    	 		});
     		},
     		error:function(xhr){
 			}

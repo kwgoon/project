@@ -7,13 +7,22 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#boardW").click(function(){
-		console.log($("form").serialize());
 		$.ajax({
 	    	type: "POST",
     		url: "controller?action=boardWrite",
     		data: $("form").serialize(),
     		success:function(result){
-      			$("#main").html(result);
+    			$.fancybox.close();
+    			$.ajax({
+    	    		url: "controller?action=boardListView",
+    	    		success:function(result){
+    	      			$("#main").html(result);
+    	      			msg('게시글 등록 성공'); 
+    	      		},
+    	    		error:function(xhr){
+    	    			alert("error 발생시 호출되는 블록");
+    				}
+    	 		});
     		},
     		error:function(xhr){
     			alert("error 발생시 호출되는 블록");

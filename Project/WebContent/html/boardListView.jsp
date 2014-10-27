@@ -18,7 +18,9 @@ $(document).ready(function(){
  		});
 	});
 	$("#boardWrite").click(function(){
-		$(".fancybox").fancybox(  {href : 'html/boardWrite.jsp'} ); 
+		$(".fancybox").fancybox({
+			href : 'html/boardWrite.jsp'
+		}); 
 	});
 });
 </script>
